@@ -15,4 +15,8 @@
 
     <packaging>pom</packaging>
 
+    <modules>
+        <module>students</module>
+    </modules>
+
 </project>
