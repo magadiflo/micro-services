@@ -9,7 +9,6 @@ spring:
     import: optional:configserver:http://localhost:8888
 
   datasource:
-    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5433/db_students
     username: magadiflo
     password: magadiflo
@@ -17,7 +16,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
 
 eureka:
   instance:
@@ -26,3 +27,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    org.hibernate.SQL: debug

@@ -1,0 +1,14 @@
+services:
+  ##### Postgres database for Students
+  db-students:
+    container_name: db-students
+    image: postgres:15.2-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db_students
+      POSTGRES_USER: magadiflo
+      POSTGRES_PASSWORD: magadiflo
+    ports:
+      - 5433:5432
+    expose:
+      - 5433
