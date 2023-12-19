@@ -19,6 +19,7 @@
 
     <modules>
         <module>infrastructure</module>
+        <module>business-domain</module>
     </modules>
 
     <properties>
