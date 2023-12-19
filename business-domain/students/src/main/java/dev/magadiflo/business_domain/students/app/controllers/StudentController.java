@@ -21,8 +21,13 @@ public class StudentController {
         return ResponseEntity.ok(this.studentService.listAllStudents());
     }
 
+    @GetMapping(path = "/school/{school-id}")
+    public ResponseEntity<List<Student>> findAllStudentsBySchool(@PathVariable(value = "school-id") Long schoolId) {
+        return ResponseEntity.ok(this.studentService.findAllStudentsBySchool(schoolId));
+    }
+
     @PostMapping
-    public ResponseEntity<Student> saveStudent(@RequestBody  Student student) {
+    public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.studentService.saveStudent(student));
     }
 

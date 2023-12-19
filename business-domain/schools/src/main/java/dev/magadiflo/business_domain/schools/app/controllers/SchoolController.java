@@ -1,5 +1,6 @@
 package dev.magadiflo.business_domain.schools.app.controllers;
 
+import dev.magadiflo.business_domain.schools.app.models.dtos.FullSchoolResponse;
 import dev.magadiflo.business_domain.schools.app.models.entities.School;
 import dev.magadiflo.business_domain.schools.app.services.ISchoolService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,13 @@ public class SchoolController {
     @GetMapping
     public ResponseEntity<List<School>> listAllSchools() {
         return ResponseEntity.ok(this.schoolService.listAllSchools());
+    }
+
+    @GetMapping(path = "/with-students/{school-id}")
+    public ResponseEntity<FullSchoolResponse> findSchoolsWithStudents(@PathVariable(value = "school-id") Long id) {
+        return this.schoolService.findSchoolsWithStudents(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping

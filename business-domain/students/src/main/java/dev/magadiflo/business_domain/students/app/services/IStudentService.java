@@ -7,5 +7,7 @@ import java.util.List;
 public interface IStudentService {
     List<Student> listAllStudents();
 
+    List<Student> findAllStudentsBySchool(Long schoolId);
+
     Student saveStudent(Student student);
 }

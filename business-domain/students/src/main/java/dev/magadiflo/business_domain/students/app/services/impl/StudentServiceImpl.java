@@ -22,6 +22,11 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
+    public List<Student> findAllStudentsBySchool(Long schoolId) {
+        return this.studentRepository.findAllStudentsBySchoolId(schoolId);
+    }
+
+    @Override
     @Transactional
     public Student saveStudent(Student student) {
         return this.studentRepository.save(student);
