@@ -1,0 +1,33 @@
+services:
+  ##### Postgres database for Students
+  db-students:
+    container_name: db-students
+    image: postgres:15.2-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db_students
+      POSTGRES_USER: magadiflo
+      POSTGRES_PASSWORD: magadiflo
+    ports:
+      - 5433:5432
+    expose:
+      - 5433
+  ##### Postgres database for Schools
+  db-schools:
+    container_name: db-schools
+    image: postgres:15.2-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: db_schools
+      POSTGRES_USER: magadiflo
+      POSTGRES_PASSWORD: magadiflo
+    ports:
+      - 5434:5432
+    expose:
+      - 5434
+  ##### Zipkin
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin:2.24.2
+    ports:
+      - 9411:9411
