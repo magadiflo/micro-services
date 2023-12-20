@@ -26,3 +26,8 @@ eureka:
 logging:
   level:
     org.hibernate.SQL: debug
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

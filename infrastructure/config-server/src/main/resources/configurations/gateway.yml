@@ -31,3 +31,8 @@ logging:
     root: info
     org.springframework.cloud.gateway: trace
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
