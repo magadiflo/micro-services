@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: students-route
+          uri: lb://students
+          predicates:
+            - Path=/api/v1/students/**
+        - id: schools-route
+          uri: lb://schools
+          predicates:
+            - Path=/api/v1/schools/**
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# Log
+logging:
+  level:
+    root: info
+    org.springframework.cloud.gateway: trace
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
